@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const URL = '/api/v1/greetings';
-
+/* eslint-disable import/prefer-default-export */
 export const getGreetingsData = createAsyncThunk('greetings/get', async (arg, { rejectWithValue }) => {
   try {
     const response = await axios.get(URL);
