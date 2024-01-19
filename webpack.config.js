@@ -21,6 +21,13 @@ module.exports = {
     sourceMapFilename: '[name].js.map',
     path: path.resolve(__dirname, 'app/assets/builds'),
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      '@components': path.resolve(__dirname, 'app/javascript/react/src/components'),
+      '@redux': path.resolve(__dirname, 'app/javascript/react/src/redux'),
+    },
+  },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
