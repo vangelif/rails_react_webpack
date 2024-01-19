@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getGreetingsData } from '../redux/greetingsSlice';
 
 const Greeting = () => {
-    const state = useSelector(state => state.greeting);
-    console.log("STATE: ", state);
-    // console.log("STATE: ", state);
+    const { message: { message } } = useSelector(state => state.greeting);
 
     const dispatch = useDispatch();
     
@@ -13,14 +11,11 @@ const Greeting = () => {
         dispatch(getGreetingsData());
     }, [dispatch]);
 
-
-    console.log("STATE: ", state);
-
     return (
         <>
             <div>
                 <h1>GREETINGS</h1>
-                {state}
+                {message}
             </div>
         </>
     )

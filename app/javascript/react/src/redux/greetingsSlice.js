@@ -12,8 +12,7 @@ const URL = '/api/v1/greetings';
 export const getGreetingsData = createAsyncThunk('greetings/get', async (arg, { rejectWithValue }) => {
     try {
         const response = await axios.get(URL);
-        console.log("RESPONSE: ", response);
-        return { data } = response;    
+        return response.data;    
     } catch (error) {
         return rejectWithValue(error.message);
     }
@@ -30,7 +29,7 @@ export const greetingsMessages = createSlice({
         .addCase(getGreetingsData.fulfilled, (state, action) => {
             state.loading = false;
             state.isLoaded = true;
-            state.message = action.payload.message;
+            state.message = action.payload;
         })
         .addCase(getGreetingsData.rejected, (state, action) => {
             state.message = action.payload;
